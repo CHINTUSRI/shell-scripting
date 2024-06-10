@@ -1,0 +1,98 @@
+# Arethamatic Operations
+printf "Enter First Number: "
+read a
+printf "Enter Second Nmunber: "
+read b
+c=`expr $a + $b`
+     echo "The Sum Of First And Second Number is: $c"
+c=`expr $a - $b`
+     echo "The Deffirence Between First And Second Number is: $c"
+c=`expr $a \* $b`
+     echo "The Product Of First And Second Number is: $c"
+c=`expr $a / $b`
+     echo "The Devission Of First And Second Number is: $c"
+c=`expr $a % $b`     
+     echo "The Modulus Of First And Second Number is: $c"
+
+
+
+# Logical Operators &=And !=Not-Equal ==Equal -gt=Greater-Then -lt=Less-Then -eq=Equal -nq=Not-Equal
+printf "Enter Three Numners: "
+read a b c
+if [ $a -gt $b ] && [ $a -gt $c ]
+then
+     echo "The First Number A is Big"
+elif [ $b -gt $a ] && [ $b -gt $c ]
+then
+     echo "The Second Number B is Big"
+else     
+     echo "The Third Number c is Big"
+fi
+
+
+# File Options -e=File Or Directory Exist
+#-e <filename> A file Exists
+#-f <filename> A file is a Regular file (txt, img, docs…)
+#-d <filename> A file is a Directory
+#-r <filename> A file has Read permissions
+#-w <filename> A file has Write permissions
+#-x <filename> A file has Execute permissions
+#-s <filename> A file contains more than 1 byte
+#-O <filename> A file is owned by User
+#-G <filename> A file is owned by Group
+#<file1> -ef <file2> File1 is linked with File2
+#<file1> -nt <file2> File1 is newer than File2
+#<file1> -ot <file2> File1 is older than File2
+
+printf "Enter Your File Option: "
+read File
+if [ -e $File ]
+then 
+     echo "The Entered File is Regular"
+else      
+     echo "The Entered File Does't Exist"
+fi
+
+printf "Enter Your File Option: "
+read File
+if [ -d $File ]
+then
+     echo "The Entered File is An Directory"
+else 
+     echo "The Entered File is Not An Directory"
+fi
+
+printf "Enter Your File Option: "
+read File
+if [ -r $File ]
+then
+     echo "The Entered File Had Read Permission"
+else
+     echo "The Entered File Not Have Read Permission"
+fi
+
+printf "Enter Your File Option: "
+read File
+if [ -W $File ]
+then
+     echo "The Entered File Had Write Permission"
+else
+     echo "The Entered File Not Have Write Permission"
+fi
+
+printf "Enter Your File Option: "
+read File
+if [ -x $File ]
+then
+     echo "The Entered File Had Exicute Permission"
+echo
+     echo "The Entered File Not Have Exicute Permission"
+fi
+
+printf "Enter Your File Name: "
+read File
+if [ -s File ]
+then
+     echo " The Entered File Had Size More Then 1 Byte"
+fi
+
