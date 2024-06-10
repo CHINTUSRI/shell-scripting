@@ -17,6 +17,9 @@ c=`expr $a % $b`
 
 
 # Logical Operators &=And !=Not-Equal ==Equal -gt=Greater-Then -lt=Less-Then -eq=Equal -nq=Not-Equal
+
+#Script to find biggest number among 3 numbers
+
 printf "Enter Three Numners: "
 read a b c
 if [ $a -gt $b ] && [ $a -gt $c ]
@@ -44,7 +47,7 @@ fi
 #<file1> -nt <file2> File1 is newer than File2
 #<file1> -ot <file2> File1 is older than File2
 
-printf "Enter Your File Option: "
+printf "Enter Your File Name: "
 read File
 if [ -e $File ]
 then 
@@ -53,7 +56,7 @@ else
      echo "The Entered File Does't Exist"
 fi
 
-printf "Enter Your File Option: "
+printf "Enter Your File Name: "
 read File
 if [ -d $File ]
 then
@@ -62,7 +65,7 @@ else
      echo "The Entered File is Not An Directory"
 fi
 
-printf "Enter Your File Option: "
+printf "Enter Your File Name: "
 read File
 if [ -r $File ]
 then
@@ -71,7 +74,7 @@ else
      echo "The Entered File Not Have Read Permission"
 fi
 
-printf "Enter Your File Option: "
+printf "Enter Your File Name: "
 read File
 if [ -W $File ]
 then
@@ -80,7 +83,7 @@ else
      echo "The Entered File Not Have Write Permission"
 fi
 
-printf "Enter Your File Option: "
+printf "Enter Your File Name: "
 read File
 if [ -x $File ]
 then
@@ -91,8 +94,136 @@ fi
 
 printf "Enter Your File Name: "
 read File
-if [ -s File ]
+if [ -s $File ]
 then
-     echo " The Entered File Had Size More Then 1 Byte"
+     echo "The Entered File Had Size More Then 1 Byte"
+fi
+
+printf "Enter Your File Name: "
+read File
+if [ -O $File ]
+then
+     echo "The Entered File is Owned By User"
+fi
+
+printf "Enter Your File Name: "
+read File
+if [ -G $File ]
+then
+     echo "The Entered File is Owned By Group"
+fi
+
+
+#Script for Even or Odd number
+
+printf "Enter The Number: "
+read a
+if [ `expr $a % 2` -eq 0 ]
+then
+     echo "The Value You Entered is Even"
+else
+     echo "The Value You Enetered is Odd"
+fi
+
+#Script for copying file
+printf "Enter Your Source File/Directory: "
+read a
+printf "Enter Your Destination File/Directory Path: "
+read b
+cp -rf $a $b
+echo "The File/Directory Copied Successfully Go And Chech it"
+
+
+#Script to verify given IP is valid or not
+
+printf "\n Enter an IP address/Hostname: "
+read ip
+ping $ip -c1 > /dev/null
+if [ $? -eq 0 ]
+then
+echo $ip is valid IP/Hostname
+else
+echo $ip is invalid IP/Hostname
+fi
+
+#Script to verify given User is valid or not
+
+printf "\n Enter an Username: "
+read uname
+grep $uname /etc/passwd > /dev/null
+if [ $? –eq 0 ]
+then
+echo $uname is valid Username
+else
+echo $uname is invalid Username
+fi
+
+
+#Script to verify eligible to vote & senior citizen
+
+printf "\n Enter your age: "
+read age
+if [ $age -ge 18 ]
+then
+echo "You are eligible to vote."
+if [ $age -ge 65 ]
+then
+echo "You are also eligible for senior citizen benefits."
+else
+echo "You are not eligible for senior citizen benefits."
+fi
+else
+echo "You are not eligible to vote."
+fi
+
+
+#Script to find positive or negative or zero
+
+
+printf "\n Enter a number: "
+read num
+if [ $num -gt 0 ]
+then
+echo "$num is Positive number. "
+elif [ $num -lt 0 ]
+then
+echo "$num is Negative number. "
+else
+echo "$num is Zero."
+fi
+
+
+#Script to find the reverse of a number
+
+
+printf "Enter a Number: "
+read n
+m=0
+while [ $n -gt 0 ]
+do
+r=`expr $n % 10`
+m=`expr $m \* 10 + $r`
+n=`expr $n / 10`
+done
+echo Reverse Number: $m
+
+
+#Script to find the number is palindrome
+
+printf "Enter a Number: "
+read n
+temp=$n
+rn=0
+while [ $n -gt 0 ]
+do
+r=`expr $n % 10`
+rn=`expr $rn \* 10 + $r`
+n=`expr $n / 10`
+done
+if [ $temp -eq $rn ]
+then
+echo It is Palindrome
+else
+echo It is Not Palindrome
 fi
 
